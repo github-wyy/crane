@@ -131,6 +131,7 @@ func (rr *ResourceRecommender) Recommend(ctx *framework.RecommendationContext) e
 				pr.Target[corev1.ResourceMemory] = memQuantity.String()
 			}
 
+			fmt.Println("======*======", len(pr.Target))
 			if len(pr.Target) != 0 {
 				resourceRecommendation.Pod = &pr
 			}
