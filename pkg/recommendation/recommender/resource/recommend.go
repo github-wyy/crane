@@ -131,7 +131,9 @@ func (rr *ResourceRecommender) Recommend(ctx *framework.RecommendationContext) e
 				pr.Target[corev1.ResourceMemory] = memQuantity.String()
 			}
 
-			resourceRecommendation.Pod = &pr
+			if len(pr.Target) != 0 {
+				resourceRecommendation.Pod = &pr
+			}
 		} else {
 			klog.V(4).Infof("not use pod metrics for pod %s", ctx.Pods[0].Name)
 		}
